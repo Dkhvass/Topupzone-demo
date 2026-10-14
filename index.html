@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Topupzone Demo</title>
+<style>
+body{margin:0;background:#0b1020;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;padding:25px;background:#151e33}
+h1{color:#71e6c1}
+main{max-width:500px;margin:auto;padding:20px}
+.card{background:#151e33;border:1px solid #34425b;padding:16px;margin:12px 0;border-radius:12px}
+label{display:block;margin:12px 0 6px}
+input,select,button{box-sizing:border-box;width:100%;padding:13px;border-radius:8px;font-size:15px}
+input,select{background:#0b1020;color:white;border:1px solid #34425b}
+button{background:#71e6c1;color:#10241e;border:0;font-weight:bold;margin-top:10px}
+.notice{color:#ffe3a0;background:#382d15;padding:12px;border-radius:8px;font-size:13px}
+#hasil{display:none;white-space:pre-line;background:#142e29;padding:14px;border-radius:8px;margin-top:15px;overflow-wrap:anywhere}
+footer{text-align:center;color:#9ba9bf;padding:20px;font-size:12px}
+</style>
+</head>
+<body>
+<header>
+<h1>Topupzone</h1>
+<p>Website Simulasi Top-Up Game</p>
+</header>
+<main>
+<div class="notice">MODE DEMO: Tidak ada pembayaran asli atau pengiriman item game.</div>
+<div class="card">
+<h3>1. Pilih Game</h3>
+<select id="game">
+<option>Mobile Legends (Demo)</option>
+<option>Free Fire (Demo)</option>
+<option> PUBG Mobile (Demo)</option>
+<option>Genshin Impact (Demo)</option>
+</select>
+<label>ID pemain demo</label>
+<input id="player" placeholder="Masukkan ID contoh">
+<h3>2. Pilih Nominal</h3>
+<select id="nominal">
+<option>100 Diamond - Rp5.000 (Demo)</option>
+<option>250 Diamond - Rp10.000 (Demo)</option>
+<option>500 Diamond - Rp20.000 (Demo)</option>
+<option>1000 Diamond - Rp35.000 (Demo)</option>
+</select>
+<h3>3. Pembayaran</h3>
+<select id="bayar">
+<option>QRIS simulasi</option>
+<option>E-wallet simulasi</option>
+<option>Transfer bank simulasi</option>
+</select>
+<button onclick="pesan()">Buat Pesanan Demo</button>
+<div id="hasil" role="status"></div>
+</div>
+</main>
+<footer>Topupzone Demo · Transaksi tidak nyata</footer>
+<script>
+function pesan(){
+const p=document.getElementById('player').value.trim();
+if(!p){alert('Isi ID pemain demo dulu!');return;}
+const nomor='DEMO-'+Date.now().toString().slice(-8);
+document.getElementById('hasil').textContent=
+'PESANAN DEMO BERHASIL DIBUAT\n'+
+'Nomor: '+nomor+'\n'+
+'Game: '+document.getElementById('game').value+'\n'+
+'ID demo: '+p+'\n'+
+'Nominal: '+document.getElementById('nominal').value+'\n'+
+'Pembayaran: '+document.getElementById('bayar').value+
+'\nStatus: SIMULASI, BELUM DIBAYAR.\nTidak ada item yang dikirim.';
+document.getElementById('hasil').style.display='block';
+}
+</script>
+</body>
+</html>
